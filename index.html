@@ -1,1 +1,495 @@
 Primera versión de CMAARKET
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b0b">
+  <title>CMAARKET | Tu mercado digital</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0b0b;
+      color: #fff;
+      padding-bottom: 85px;
+    }
+
+    header {
+      padding: 20px 16px 14px;
+      background: #111;
+      border-bottom: 1px solid #292929;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      color: #ed202b;
+    }
+
+    .tagline {
+      color: #aaa;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .search {
+      display: flex;
+      margin-top: 17px;
+      background: #222;
+      border: 1px solid #383838;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 13px;
+      background: transparent;
+      border: 0;
+      outline: none;
+      color: white;
+      font-size: 14px;
+    }
+
+    .search button {
+      background: #ed202b;
+      color: white;
+      border: 0;
+      padding: 0 17px;
+      font-size: 18px;
+    }
+
+    .container {
+      padding: 20px 15px;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, #37090d, #a30d19 65%, #e32631);
+      border-radius: 15px;
+      padding: 25px 20px;
+      min-height: 165px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    .hero small {
+      color: #ffdadd;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      margin: 10px 0;
+      max-width: 260px;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 13px;
+      color: #ffe5e6;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .section-title h2 {
+      font-size: 18px;
+    }
+
+    .section-title span {
+      font-size: 12px;
+      color: #ed343d;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 27px;
+    }
+
+    .category {
+      background: #181818;
+      border: 1px solid #292929;
+      border-radius: 12px;
+      padding: 15px 5px;
+      text-align: center;
+      cursor: pointer;
+      color: white;
+    }
+
+    .category .emoji {
+      display: block;
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .category p {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .product {
+      background: #171717;
+      border: 1px solid #292929;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .product-image {
+      height: 135px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+      background: linear-gradient(145deg, #292929, #111);
+    }
+
+    .product-info {
+      padding: 12px;
+    }
+
+    .product-info h3 {
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .price {
+      color: #ff3944;
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    .seller {
+      color: #999;
+      font-size: 11px;
+      margin-top: 7px;
+    }
+
+    .contact {
+      width: 100%;
+      background: #ed202b;
+      color: white;
+      border: 0;
+      padding: 10px;
+      border-radius: 7px;
+      margin-top: 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .empty {
+      display: none;
+      color: #aaa;
+      text-align: center;
+      padding: 25px 5px;
+      grid-column: 1 / -1;
+    }
+
+    .sell-banner {
+      background: #191919;
+      border: 1px solid #ed202b;
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 27px;
+    }
+
+    .sell-banner h3 {
+      margin-bottom: 8px;
+    }
+
+    .sell-banner p {
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .sell-banner button {
+      background: #ed202b;
+      color: white;
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 15px;
+      margin-top: 13px;
+      font-weight: bold;
+    }
+
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      border-top: 1px solid #333;
+      display: flex;
+      justify-content: space-around;
+      padding: 11px 3px 9px;
+      z-index: 20;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: #aaa;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    nav button span {
+      display: block;
+      font-size: 21px;
+      margin-bottom: 4px;
+    }
+
+    nav button.active {
+      color: #ed202b;
+    }
+
+    @media (min-width: 700px) {
+      .container, header {
+        max-width: 850px;
+        margin: auto;
+      }
+
+      .products {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      nav {
+        max-width: 850px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 12px 12px 0 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="brand">CM<span>A</span>ARKET</div>
+    <div class="tagline">TU MERCADO DIGITAL</div>
+
+    <div class="search">
+      <input id="searchInput" type="search"
+        placeholder="¿Qué estás buscando?">
+      <button onclick="searchProducts()">⌕</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <small>BIENVENIDO A CMAARKET</small>
+      <h1>Compra, vende y descubre.</h1>
+      <p>Todo lo que buscas, en un solo lugar.</p>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Explora categorías</h2>
+        <span>Ver todo</span>
+      </div>
+
+      <div class="categories">
+        <button class="category" onclick="filterCategory('Ropa')">
+          <span class="emoji">👕</span><p>Ropa</p>
+        </button>
+        <button class="category" onclick="filterCategory('Zapatos')">
+          <span class="emoji">👟</span><p>Zapatos</p>
+        </button>
+        <button class="category" onclick="filterCategory('Comida')">
+          <span class="emoji">🍔</span><p>Comida</p>
+        </button>
+        <button class="category" onclick="filterCategory('Accesorios')">
+          <span class="emoji">⌚</span><p>Accesorios</p>
+        </button>
+        <button class="category" onclick="filterCategory('Belleza')">
+          <span class="emoji">💄</span><p>Belleza</p>
+        </button>
+        <button class="category" onclick="filterCategory('Otros')">
+          <span class="emoji">🛍️</span><p>Otros</p>
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2 id="productsTitle">Productos destacados</h2>
+        <span onclick="showAll()">Ver todos</span>
+      </div>
+
+      <div class="products" id="products">
+
+        <article class="product" data-category="Ropa">
+          <div class="product-image">👕</div>
+          <div class="product-info">
+            <h3>Camiseta casual</h3>
+            <div class="price">$12.00</div>
+            <div class="seller">Tienda de demostración</div>
+            <button class="contact" onclick="demoAlert()">Ver producto</button>
+          </div>
+        </article>
+
+        <article class="product" data-category="Zapatos">
+          <div class="product-image">👟</div>
+          <div class="product-info">
+            <h3>Tenis deportivos</h3>
+            <div class="price">$25.00</div>
+            <div class="seller">Tienda de demostración</div>
+            <button class="contact" onclick="demoAlert()">Ver producto</button>
+          </div>
+        </article>
+
+        <article class="product" data-category="Comida">
+          <div class="product-image">🍔</div>
+          <div class="product-info">
+            <h3>Hamburguesa especial</h3>
+            <div class="price">$3.50</div>
+            <div class="seller">Comida de demostración</div>
+            <button class="contact" onclick="demoAlert()">Ver producto</button>
+          </div>
+        </article>
+
+        <article class="product" data-category="Accesorios">
+          <div class="product-image">⌚</div>
+          <div class="product-info">
+            <h3>Reloj moderno</h3>
+            <div class="price">$18.00</div>
+            <div class="seller">Tienda de demostración</div>
+            <button class="contact" onclick="demoAlert()">Ver producto</button>
+          </div>
+        </article>
+
+        <div class="empty" id="empty">
+          No encontramos productos en esta búsqueda.
+        </div>
+
+      </div>
+    </section>
+
+    <section class="sell-banner">
+      <h3>¿Tienes un negocio?</h3>
+      <p>Próximamente podrás crear tu propia tienda en CMAARKET y mostrar tus productos a nuevos clientes.</p>
+      <button onclick="demoAlert()">Quiero vender</button>
+    </section>
+
+  </main>
+
+  <nav>
+    <button class="active" onclick="navAlert('Inicio', this)">
+      <span>⌂</span>Inicio
+    </button>
+    <button onclick="navAlert('Favoritos', this)">
+      <span>♡</span>Favoritos
+    </button>
+    <button onclick="navAlert('Bolsa', this)">
+      <span>🛍</span>Bolsa
+    </button>
+    <button onclick="navAlert('Mi cuenta', this)">
+      <span>♙</span>Mi cuenta
+    </button>
+  </nav>
+
+  <script>
+    const products = document.querySelectorAll('.product');
+    const empty = document.getElementById('empty');
+
+    function filterCategory(category) {
+      document.getElementById('productsTitle').textContent = category;
+      let visible = 0;
+
+      products.forEach(product => {
+        const match = product.dataset.category === category;
+        product.style.display = match ? 'block' : 'none';
+        if (match) visible++;
+      });
+
+      empty.style.display = visible ? 'none' : 'block';
+      document.getElementById('products').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    function showAll() {
+      document.getElementById('productsTitle').textContent =
+        'Productos destacados';
+
+      products.forEach(product => {
+        product.style.display = 'block';
+      });
+
+      empty.style.display = 'none';
+    }
+
+    function searchProducts() {
+      const query = document.getElementById('searchInput')
+        .value.toLowerCase().trim();
+
+      let visible = 0;
+
+      products.forEach(product => {
+        const match = product.textContent.toLowerCase()
+          .includes(query);
+
+        product.style.display = match ? 'block' : 'none';
+        if (match) visible++;
+      });
+
+      document.getElementById('productsTitle').textContent =
+        'Resultados de búsqueda';
+
+      empty.style.display = visible ? 'none' : 'block';
+    }
+
+    function demoAlert() {
+      alert('¡Gracias por tu interés! Esta función estará disponible próximamente en CMAARKET.');
+    }
+
+    function navAlert(section, button) {
+      document.querySelectorAll('nav button').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      button.classList.add('active');
+
+      if (section !== 'Inicio') {
+        alert(section + ': esta sección estará disponible próximamente.');
+      } else {
+        showAll();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  </script>
+
+</body>
+</html>
